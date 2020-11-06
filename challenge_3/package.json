@@ -1,0 +1,37 @@
+{
+  "name": "challenge_3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd server/ && nodemon server.js",
+    "build": "webpack --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "axios": "^0.21.0",
+    "bootstrap": "^4.5.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.6",
+    "react": "^17.0.1",
+    "react-bootstrap": "^1.4.0",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.1.0",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0"
+  }
+}
