@@ -21,5 +21,6 @@ app.post('/roll', (req, res) => {
 
    var result = calculateScore(score)
   console.log(result);
-    res.send(result.toString());
+    res.send(result);
+
 })
