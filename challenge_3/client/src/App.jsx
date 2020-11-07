@@ -18,6 +18,15 @@ const App = () => {
           console.log(err)
         } else {
           console.log('results.data from server', result.data);
+          //set state
+          let update = result.data;
+
+          setFrame(update.frame);
+          setFrameRolls(update.frameRolls);
+          setCurrentScore(update.currentScore);
+          setResult(update.result);
+          setFrameScore(update.frameScore);
+          setTotalScore(update.totalScore);
         }
     });
 
