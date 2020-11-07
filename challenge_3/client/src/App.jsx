@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { postScore } from './../lib/routes.js';
+import { postScore, startGame } from './../lib/routes.js';
 
 const App = () => {
   const [frame, setFrame] = useState(1);
@@ -9,12 +9,14 @@ const App = () => {
   const [totalScore, setTotalScore] = useState(0);
   const [frameRolls, setFrameRolls] =  useState(0);
   const [gameOver, setGameOver] = useState(false);
+  const [name, setName] = useState('');
+  const [isStarted, setIsStarted] = useState(false);
 
 
   const rollBall = (event) => {
     //send request to server with button pressed
     var score = event.target.value;
-    postScore(score, (err, result) => {
+    postScore(score, name, (err, result) => {
         if(err) {
           console.log(err)
         } else {
@@ -35,11 +37,41 @@ const App = () => {
     //receive back info and set the state with it and update state
   }
 
+  const handleChange = (event) => {
+     setName(event.target.value)
+  }
+
+  const submitStart = () => {
+    event.preventDefault();
+     setIsStarted(true);
+    console.log('submitted');
+      startGame(name, (err, result) => {
+        if(err) {
+          console.log(err)
+        } else {
+          console.log('start game results', result.data);
+  }
+})
+  }
 
 
   return (
     <div>
-      currentscore{currentScore}
+
+          {isStarted ?
+           <div><h3>{name}</h3></div> :
+            <form  onSubmit={submitStart}>
+            <label>
+                Name:
+                <input type="text" name="name" value={name} onChange={handleChange}/>
+                </label>
+              <button>start!!</button>
+            </form>
+
+           }
+
+
+      <div>currentscore{currentScore}</div>
       <div>frame rolls out of 2: {frameRolls}</div>
       <div>Frame: {frame}</div>
       <div>result: {result}</div>

@@ -14,4 +14,17 @@ export const postScore = (data, callback) => {
    });
 }
 
+export const startGame = (name, callback) => {
+  console.log('inside startGame')
+  axios.post('http://localhost:3000/start', {
+    name: name
+  })
+  .then((response) => {
+    callback(null, response);
+  })
+  .catch((error) => {
+    callback(error, null)
+  })
+}
+
 
