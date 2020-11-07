@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { postScore } from './../lib/routes.js';
 
 const App = () => {
-  const [frame, setFrame] = useState(0);
+  const [frame, setFrame] = useState(1);
   const [currentScore, setCurrentScore] = useState(0);
   const [result, setResult] = useState([]);
   const [frameScore, setFrameScore] = useState([]);
   const [totalScore, setTotalScore] = useState(0);
   const [frameRolls, setFrameRolls] =  useState(0);
+  const [gameOver, setGameOver] = useState(false);
 
 
   const rollBall = (event) => {
@@ -21,12 +22,13 @@ const App = () => {
           //set state
           let update = result.data;
 
-          setFrame(update.frame);
+          setFrame(update.frame + 1);
           setFrameRolls(update.frameRolls);
           setCurrentScore(update.currentScore);
           setResult(update.result);
           setFrameScore(update.frameScore);
           setTotalScore(update.totalScore);
+          setGameOver(update.isOver);
         }
     });
 
@@ -43,6 +45,7 @@ const App = () => {
       <div>result: {result}</div>
       <div>Frame Score: {frameScore}</div>
       <div>Total Score: {totalScore}</div>
+      <div>Game Over: {gameOver ? "gameOver" : "play On"}</div>
       <div>
         <button onClick={rollBall} value={1}>1</button> <button  onClick={rollBall} value="2">2</button> <button  onClick={rollBall} value="3">3</button>
         <button  onClick={rollBall} value="4">4</button> <button  onClick={rollBall} value="5">5</button> <button  onClick={rollBall} value="6">6</button>
