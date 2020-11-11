@@ -7,6 +7,7 @@ export const postScore = (data, callback) => {
     roll: data
   })
    .then((response) => {
+     console.log('response inside post request', response)
      callback(null, response);
    })
    .catch((error) => {

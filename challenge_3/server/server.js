@@ -14,7 +14,7 @@ app.listen(PORT, () => {
   console.log('Serving up now at '+ JSON.stringify(PORT))
 });
 
-var player = new Score();
+var player = new Score(); //<<<I think there is an issue where with this variable that keeps getting initiated. I need to figure out how to craete this varaible but let all routes access it.
 app.post('/start', (req, res) => {
   var name = req.body.name;
   //how do I save this globally or so other functions can access it.
@@ -27,11 +27,12 @@ app.post('/start', (req, res) => {
 
 app.post('/roll', (req, res) => {
 
-  console.log(req.body);
+  console.log('inside server roll', req.body);
   var score = req.body.roll;
   score = parseInt(score);
+  console.log('player is right here', player);
   player.calculateScore(score);
-  console.log('player', player);
+
 
 
   // console.log(result);

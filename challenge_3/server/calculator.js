@@ -12,6 +12,8 @@
 
   Score.prototype.calculateScore = (score) => {
     this.frame = 'wassap';
+    this.currentScore = score;
+
 
   }
 
