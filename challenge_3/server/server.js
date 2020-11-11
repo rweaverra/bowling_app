@@ -14,12 +14,13 @@ app.listen(PORT, () => {
   console.log('Serving up now at '+ JSON.stringify(PORT))
 });
 
+var player = new Score();
 app.post('/start', (req, res) => {
   var name = req.body.name;
-  var player = new Score(name);
-
+  //how do I save this globally or so other functions can access it.
   console.log('start received name', name);
-
+  player.name = name;
+  console.log('player now global', player);
   res.send('responding from server');
 })
 
@@ -29,11 +30,13 @@ app.post('/roll', (req, res) => {
   console.log(req.body);
   var score = req.body.roll;
   score = parseInt(score);
-  let result = player.calculateScore(score);
-  console.log(result);
+  player.calculateScore(score);
+  console.log('player', player);
 
 
   // console.log(result);
-    res.send(result);
+    res.send(player);
 
 })
+
+//forwhatever reason it is not using the calculate score method. either it cant connect to the other page, or some othe reason.

@@ -10,8 +10,9 @@
 
   }
 
-  Score.prototype.calculateScore = () => {
-    return "turkey"
+  Score.prototype.calculateScore = (score) => {
+    this.frame = 'wassap';
+
   }
 
 module.exports = Score;
