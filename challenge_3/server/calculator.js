@@ -13,8 +13,8 @@
   Score.prototype.calculateScore = (score) => {
     this.frame = 'wassap';
     this.currentScore = score;
-
-
+//its calling this method, but this.frame isn't changing, and Im not sure why this is happening. Im not sure if I am handling the global object correctly. perhaps this is not correct.
+   console.log('inside calculateScore');
   }
 
 module.exports = Score;
