@@ -16,7 +16,7 @@ const App = () => {
   const rollBall = (event) => {
     //send request to server with button pressed
     var score = event.target.value;
-    postScore(score, name, (err, result) => {
+    postScore(score, (err, result) => {
         if(err) {
           console.log(err)
         } else {

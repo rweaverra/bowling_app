@@ -14,10 +14,12 @@ app.listen(PORT, () => {
 });
 
 
+
+var player = new Score();
+
 app.post('/start', (req, res) => {
   var name = req.body.name;
   console.log('start received name', name);
-  player = new Score();
   player.name = name;
   console.log('player now global', player);
   res.send('responding from server');
@@ -36,4 +38,3 @@ app.post('/roll', (req, res) => {
 
 })
 
-//forwhatever reason it is not using the calculate score method. either it cant connect to the other page, or some othe reason.

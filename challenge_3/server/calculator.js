@@ -1,5 +1,5 @@
 
-  const Score = function() {
+const Score = function() {
   this.frame = 0,
   this.currentScore = 0,
   this.result = [],
@@ -10,11 +10,12 @@
 
   }
 
-  Score.prototype.calculateScore = (score) => {
-    this.frame = 'wassap';
-    this.currentScore = score;
-//its calling this method, but this.frame isn't changing, and Im not sure why this is happening. Im not sure if I am handling the global object correctly. perhaps this is not correct.
-   console.log('inside calculateScore');
+  Score.prototype.calculateScore = function(score) {
+   this.frame++;
+   this.currentScore = score;
+   console.log('inside calculate score', this.frame);
+  //i need this method to change the object, but it isnt I was using e6s for this..uggh
+
   }
 
 module.exports = Score;
