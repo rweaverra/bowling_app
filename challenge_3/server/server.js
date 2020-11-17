@@ -15,11 +15,12 @@ app.listen(PORT, () => {
 
 
 
-var player = new Score();
+var player = new Score();//can remove this later on
 
 app.post('/start', (req, res) => {
   var name = req.body.name;
   console.log('start received name', name);
+  player = new Score();
   player.name = name;
   console.log('player now global', player);
   res.send('responding from server');

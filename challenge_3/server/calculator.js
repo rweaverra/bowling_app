@@ -11,12 +11,60 @@ const Score = function() {
   }
 
   Score.prototype.calculateScore = function(score) {
-   this.frame++;
-   this.currentScore = score;
+
+
+   //check for strike
+  //if frameRolls === 0(or 1) && score === 10
+    if(this.frameRolls === 0 && score === 10) {
+    //this.result = strike
+      this.result.push('X')
+    //frame ++
+      this.frame ++;
+
+    }
+
+  //check for spare
+  // if currentscore + score === 10
+    if(this.frameRolls === 1 && this.currentScore + score >= 10) {
+        //this.result = currentscore + spare
+      this.result.push(`${this.currentScore} /`)
+    //frame++
+      this.frame++
+    // frame rolls = 0
+      this.frameRolls = 0;
+      this.currentScore = 0;
+    }
+
+    //check for open score 2 rolls
+    if(this.frameRolls === 1 && score < 10) {
+      this.result.push(`${this.currentScore} ${score} `)
+      this.frame++
+      this.frameRolls = 0;
+      this.currentScore = 0;
+    }
+
+    //check for open score
+  // if frameRolls === 0 and score < 10
+    if(this.frameRolls === 0 && score < 10) {
+      // current score = score
+      this.currentScore = score;
+    // frame rolls = 1
+      this.frameRolls++;
+    }
+
+
+
+
+
+   //will need to put whole function inside of here. it will be better if I can split it up though and call on different methods. The idea is to make the code look good.
    console.log('inside calculate score', this.frame);
-  //i need this method to change the object, but it isnt I was using e6s for this..uggh
+
 
   }
+
+  //Score.prototype.AddResults = function() {}
+
+  //Score.prototype.AddTotalScore = function() {}
 
 module.exports = Score;
 
