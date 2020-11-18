@@ -20,12 +20,9 @@ const Score = function() {
       this.result.push('X')
     //frame ++
       this.frame ++;
-
-    }
-
-  //check for spare
-  // if currentscore + score === 10
-    if(this.frameRolls === 1 && this.currentScore + score >= 10) {
+      this.frameRolls = 0;
+      //check for spare
+    } else if(this.frameRolls === 1 && this.currentScore + score >= 10) {
         //this.result = currentscore + spare
       this.result.push(`${this.currentScore} /`)
     //frame++
@@ -33,28 +30,19 @@ const Score = function() {
     // frame rolls = 0
       this.frameRolls = 0;
       this.currentScore = 0;
-    }
-
-    //check for open score 2 rolls
-    if(this.frameRolls === 1 && score < 10) {
+       //check for open score
+    } else if(this.frameRolls === 0 && score < 10) {
+    // current score = score
+    this.currentScore = score;
+  // frame rolls = 1
+    this.frameRolls += 1;
+        //check for open score 2 rolls
+  } else if(this.frameRolls === 1 && score < 10) {
       this.result.push(`${this.currentScore} ${score} `)
-      this.frame++
+      this.frame += 1;
       this.frameRolls = 0;
       this.currentScore = 0;
     }
-
-    //check for open score
-  // if frameRolls === 0 and score < 10
-    if(this.frameRolls === 0 && score < 10) {
-      // current score = score
-      this.currentScore = score;
-    // frame rolls = 1
-      this.frameRolls++;
-    }
-
-
-
-
 
    //will need to put whole function inside of here. it will be better if I can split it up though and call on different methods. The idea is to make the code look good.
    console.log('inside calculate score', this.frame);
@@ -68,8 +56,6 @@ const Score = function() {
 
 module.exports = Score;
 
-
-//lets make this an object and give it its own methods. I want to go over this kind of stuff and then I can do this.method ect. This way I believe I can make it multiplayer.
 
 //calculate current score
 //calcutalte frame score
