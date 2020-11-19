@@ -83,6 +83,18 @@ const Score = function() {
       } else if(result[i].indexOf('/') > -1 && result[i + 1]) {
         let total = 10 + parseInt(result[i + 1][0]);
         return total;
+      } else if (result[i] === 'X' && result[i + 1] === 'X' && result[i + 2] === 'X') {
+        return 30;
+      } else if ( result[i] === 'X' && result[i + 1] === 'X' && result[i + 2]) {
+        let total = 20 + parseInt(result[i + 2][0])
+        return total;
+      } else if ( result[i] === 'X' && result[i + 1]) {
+        if(result[i + 1].indexOf('/') > 1) {   //<<<<< use filter
+          return 20;
+        }
+
+      } else if ( result[i] === 'X' && result[i + 1]) {
+        let total = 10 + parseInt(result[i + 1][0]) + parseInt(result[i + 1][1])
       }
 
      }
