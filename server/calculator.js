@@ -22,7 +22,7 @@ const Score = function() {
       this.frameRolls = 0;
       //check for spare
     } else if(this.frameRolls === 1 && this.currentScore + score >= 10) {
-      this.result.push(`${this.currentScore} /`)
+      this.result.push(`${this.currentScore}/`)
       this.frame++;
       this.frameRolls = 0;
       this.currentScore = 0;
@@ -32,7 +32,7 @@ const Score = function() {
     this.frameRolls += 1;
         //check for open score 2 rolls
   } else if(this.frameRolls === 1 && score < 10) {
-      this.result.push(`${this.currentScore} ${score} `)
+      this.result.push(`${this.currentScore}${score}`)
       this.frame ++;
       this.frameRolls = 0;
       this.currentScore = 0;
@@ -54,7 +54,6 @@ const Score = function() {
 
   //occurs after the the frame has been added
   Score.prototype.finalFrameScore = function(score) {
-    console.log('inside final frame')
     //whis need to change this.result[2] to this.result[9] and do the same to make it work with 10 frames <<<<<<<<<<<<<<<<<
     if ( this.result[2].indexOf('/') > -1 && this.frameRolls === 1) {
       this.isOver = true;
@@ -73,11 +72,18 @@ const Score = function() {
   //Score.prototype.AddFrameScore = function() {}
   Score.prototype.addFrameScore = function() {
      //checkCurrentFrame Function
-     const checkCurrentFrame = function(i, result) {
-        //if X && frame + 2 !== undefined
-
-    //so this issue is that "this" is undefined since it is inside of another function. I think I will have to bind this again so that it will refer to the Object's properties. This will be a good learning experience. I need to celebrate these roadblocks because it means I Am going to learn something new. when checkCurrentFrame is called, I think I need to bind this to this.
-
+     const checkCurrentFrame = function(i, result, frame) {
+       if(result[i].length >= 2 && result[i].indexOf('/') === -1) {
+         let total = parseInt(result[i][0]) + parseInt(result[i][1]);
+         console.log('inside check current frame', total)
+         return total;
+       } else if(result[i].indexOf('/') > -1 && result[i + 1] === 'X') {
+        let total = 20
+        return total;
+      } else if(result[i].indexOf('/') > -1 && result[i + 1]) {
+        let total = 10 + parseInt(result[i + 1][0]);
+        return total;
+      }
 
      }
 
@@ -86,11 +92,13 @@ const Score = function() {
   if(this.result !== undefined) {
 
   for ( let i = 0; i < this.result.length; i++) {
-    checkCurrentFrame(i, this.result);
+    this.frameScore[i] = checkCurrentFrame(i, this.result, this.frame);
 
   }
 
   }
+ console.log('this.result', this.result)
+  console.log('this.frameScore', this.frameScore);
   }
 
 
@@ -110,6 +118,27 @@ module.exports = Score;
 
 
 /*
+
+        //if X && frame + 2 !== undefined
+
+      if(result[i] === 'X' && result[i + 1] === 'X' && result[i + 2] === 'x') {
+        console.log('eaaaat cheese')
+
+      // add frame plus 1 and frame + 2 to result and return
+      return 30;
+      //if X && frame + 1 !== undefined
+    } else if (result[i] === 'X' && result[i + 1] !== undefined) {
+        // add frame and frame + 1
+         return frameScore[i] = result[i] + result[i + 1]
+        // if X and frame + 1 === undefined
+    } else if (result[i] === 'X' && result[i + 1] === undefined) {
+        // return frame plus 10
+        return frameScore[i] = 10;
+    }
+
+
+
+
 Score.prototype.addFrameScore = function() {
   //checkCurrentFrame Function
   var checkCurrentFrame = function(i) {
