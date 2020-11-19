@@ -10,7 +10,7 @@ const Score = function() {
 
   }
 
-  Score.prototype.calculateScore = function(score) {
+  Score.prototype.calculateScore = function(score, rollsleft) {
 
 
    //check for strike
@@ -44,13 +44,36 @@ const Score = function() {
       this.currentScore = 0;
     }
 
-   //will need to put whole function inside of here. it will be better if I can split it up though and call on different methods. The idea is to make the code look good.
+
    console.log('inside calculate score', this.frame);
+
+   if(this.frame >= 3) {
+     this.finalFrameScore()
+   }
 
 
   }
 
-  //Score.prototype.AddResults = function() {}
+  //occurs after the the frame has been added
+  Score.prototype.finalFrameScore = function(score) {
+    // if(this.result[2] !== 'X' || this.result[2] !== '/') {
+    //   this.isOver = true;
+    //   console.log('Game over Biatch');
+    if ( this.result[2].indexOf('/') > -1 && this.frameRolls === 1) {
+      this.isOver = true;
+    }else if (this.result[2] === 'X' && this.result[3] === 'X' && this.frame === 5){
+      this.isOver = true;
+    }else if(this.result[2] === 'X' && this.result[3] !== 'X' && this.frame === 4) {
+      this.isOver = true;
+    } else {
+      this.isOver = true;
+    }
+
+  }
+
+   //end of game conditional- if strike on 10 frame - two more rolls if spare on 10 frame 1 more roll
+
+  //Score.prototype.AddFrameScore = function() {}
 
   //Score.prototype.AddTotalScore = function() {}
 
