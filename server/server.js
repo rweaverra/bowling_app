@@ -22,7 +22,7 @@ app.post('/start', (req, res) => {
   console.log('start received name', name);
   player = new Score();
   player.name = name;
-  console.log('player now global', player);
+  // console.log('player now global', player);
   res.send('responding from server');
 })
 
@@ -33,7 +33,7 @@ app.post('/roll', (req, res) => {
   var score = req.body.roll;
   score = parseInt(score);
   player.calculateScore(score);
-   console.log('player show see frame change', player);
+  //  console.log('player show see frame change', player);
 
     res.send(player);
 
