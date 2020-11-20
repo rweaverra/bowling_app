@@ -18,9 +18,8 @@ function Scoring() {
     var score = event.target.value;
     postScore(score, (err, result) => {
         if(err) {
-          console.log(err)
+          console.log('error')
         } else {
-          console.log('results.data from server', result.data);
           //set state
           let update = result.data;
 

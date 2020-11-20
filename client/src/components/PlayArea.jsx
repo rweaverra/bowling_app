@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
 
 function PlayArea({ rollBall }) {
+  const [hideButton1, setHideButton1] = useState(true);
+//on click
+// disapear number(end up disapearing 10 minus number, all of the numbers)
+const toggleHide = (event) => {
+   setHideButton1(true);
+}
 
   return (
    <Container>
@@ -24,7 +30,7 @@ function PlayArea({ rollBall }) {
             <button className="button3"  onClick={rollBall} value="3">3</button>
           </Row>
           <Row className="firstRow">
-            <button className="button1" onClick={rollBall} value="1">1</button>
+            <button className={hideButton1 ? "button1" : "hidden"} onClick={toggleHide} value="1">1</button>
           </Row>
 
           </Container>

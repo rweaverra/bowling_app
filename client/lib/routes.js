@@ -6,7 +6,6 @@ export const postScore = (data, callback) => {
     roll: data
   })
    .then((response) => {
-     console.log('response inside post request', response)
      callback(null, response);
    })
    .catch((error) => {
@@ -15,7 +14,6 @@ export const postScore = (data, callback) => {
 }
 
 export const startGame = (name, callback) => {
-  console.log('inside startGame')
   axios.post('http://localhost:3000/start', {
     name: name
   })

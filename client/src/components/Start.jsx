@@ -13,12 +13,11 @@ function Start () {
   const submitStart = () => {
     event.preventDefault();
      setIsStarted(true);
-    console.log('submitted');
       startGame(name, (err, result) => {
         if(err) {
           console.log(err)
         } else {
-          console.log('start game results', result.data);
+
   }
 })
   }
