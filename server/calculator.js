@@ -48,7 +48,7 @@ const Score = function() {
 
 
    this.addFrameScore();
-
+   this.AddTotalScore();
 
   }
 
@@ -72,10 +72,14 @@ const Score = function() {
   //Score.prototype.AddFrameScore = function() {}
   Score.prototype.addFrameScore = function() {
      //checkCurrentFrame Function
+
+
      const checkCurrentFrame = function(i, result, frame) {
+      var isStrike = result[i] === 'X';
+
+
        if(result[i].length >= 2 && result[i].indexOf('/') === -1) {
          let total = parseInt(result[i][0]) + parseInt(result[i][1]);
-         console.log('inside check current frame', total)
          return total;
        } else if(result[i].indexOf('/') > -1 && result[i + 1] === 'X') {
         let total = 20
@@ -83,22 +87,26 @@ const Score = function() {
       } else if(result[i].indexOf('/') > -1 && result[i + 1]) {
         let total = 10 + parseInt(result[i + 1][0]);
         return total;
-      } else if (result[i] === 'X' && result[i + 1] === 'X' && result[i + 2] === 'X') {
+      } else if (isStrike && result[i + 1] === 'X' && result[i + 2] === 'X') {
         return 30;
-      } else if ( result[i] === 'X' && result[i + 1] === 'X' && result[i + 2]) {
+      } else if ( isStrike && result[i + 1] === 'X' && result[i + 2]) {
         let total = 20 + parseInt(result[i + 2][0])
         return total;
-      } else if ( result[i] === 'X' && result[i + 1]) {
-        if(result[i + 1].indexOf('/') > 1) {   //<<<<< use filter
-          return 20;
+      } else if ( isStrike && result[i + 1]) {
+        if(result[i + 1]  === 'X'){
+          return;
         }
-
-      } else if ( result[i] === 'X' && result[i + 1]) {
+        if(result[i + 1].indexOf('/') > -1) {
+          console.log('inside X plus /')
+          return 20;
+        } else if ( isStrike && result[i + 1]) {
         let total = 10 + parseInt(result[i + 1][0]) + parseInt(result[i + 1][1])
+        console.log('inside X then open', total)
+        return total;
       }
 
      }
-
+    }
 
   //iterate result
   if(this.result !== undefined) {
@@ -116,64 +124,23 @@ const Score = function() {
 
 
   //Score.prototype.AddTotalScore = function() {}
+  Score.prototype.AddTotalScore = function() {
+    this.totalScore = 0;
+    for (let i = 0; i < this.frameScore.length; i++) {
+      if(this.frameScore[i] === undefined) {
+        break;
+      }
+      this.totalScore += this.frameScore[i]
+    }
+  }
 
 module.exports = Score;
 
-
-//calculate current score
-//calcutalte frame score
-//calculate total score
-//conditions on when the game is over
-
-//last time i did 1st roll and second roll, but this made it really messy to create conditions on when the game is over.
-
-
-
-/*
-
-        //if X && frame + 2 !== undefined
-
-      if(result[i] === 'X' && result[i + 1] === 'X' && result[i + 2] === 'x') {
-        console.log('eaaaat cheese')
-
-      // add frame plus 1 and frame + 2 to result and return
-      return 30;
-      //if X && frame + 1 !== undefined
-    } else if (result[i] === 'X' && result[i + 1] !== undefined) {
-        // add frame and frame + 1
-         return frameScore[i] = result[i] + result[i + 1]
-        // if X and frame + 1 === undefined
-    } else if (result[i] === 'X' && result[i + 1] === undefined) {
-        // return frame plus 10
-        return frameScore[i] = 10;
-    }
+//===========Info to help
+// const isStrike = result[i] === 'X';
+// if (isStrike && 'whatever else'...) {
+  //const bowl = return Math.floor(Math.random() * 10)
 
 
 
 
-Score.prototype.addFrameScore = function() {
-  //checkCurrentFrame Function
-  var checkCurrentFrame = function(i) {
-     //if X && frame + 2 !== undefined
-      console.log('i inside check currentFrame this.result', this.result);
-      if(this.result[i] === 'X') {
-        console.log('eaaaat cheese')
-      // add frame plus 1 and frame + 2 to result and return
-      return this.frameScore[i] = this.result[i] + this.result[i + 1] + this.result[i + 2];
-      //if X && frame + 1 !== undefined
-    } else if (this.result[i] === 'X' && this.result[i + 1] !== undefined) {
-        // add frame and frame + 1
-         return this.frameScore[i] = this.result[i] + this.result[i + 1]
-        // if X and frame + 1 === undefined
-    } else if (this.result[i] === 'X' && this.result[i + 1] === undefined) {
-        // return frame plus 10
-        return this.frameScore[i] = 10;
-    }
-
-     //else if / && frame + 1 !== undefined
-      // add frame and frame + 1
-    //else if / && frame + 1 === undefined
-      // add 10 to frame
-    //else open score(length === 2 && not X or /)
-    // iterate the two numbers and add them to frame score
-    */
