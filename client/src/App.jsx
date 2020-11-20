@@ -1,88 +1,18 @@
-import React, { useState } from 'react';
-import { postScore, startGame } from './../lib/routes.js';
+import React from 'react';
+import Start from './components/Start.jsx';
+import Scoring from './components/Scoring.jsx';
 
 const App = () => {
-  const [frame, setFrame] = useState(1);
-  const [currentScore, setCurrentScore] = useState(0);
-  const [result, setResult] = useState([]);
-  const [frameScore, setFrameScore] = useState([]);
-  const [totalScore, setTotalScore] = useState(0);
-  const [frameRolls, setFrameRolls] =  useState(0);
-  const [gameOver, setGameOver] = useState(false);
-  const [name, setName] = useState('');
-  const [isStarted, setIsStarted] = useState(false);
 
-
-  const rollBall = (event) => {
-    //send request to server with button pressed
-    var score = event.target.value;
-    postScore(score, (err, result) => {
-        if(err) {
-          console.log(err)
-        } else {
-          console.log('results.data from server', result.data);
-          //set state
-          let update = result.data;
-
-          setFrame(update.frame + 1);
-          setFrameRolls(update.frameRolls);
-          setCurrentScore(update.currentScore);
-          setResult(update.result);
-          setFrameScore(update.frameScore);
-          setTotalScore(update.totalScore);
-          setGameOver(update.isOver);
-        }
-    });
-
-    //receive back info and set the state with it and update state
-  }
-
-  const handleChange = (event) => {
-     setName(event.target.value)
-  }
-
-  const submitStart = () => {
-    event.preventDefault();
-     setIsStarted(true);
-    console.log('submitted');
-      startGame(name, (err, result) => {
-        if(err) {
-          console.log(err)
-        } else {
-          console.log('start game results', result.data);
-  }
-})
-  }
 
 
   return (
     <div>
-
-          {isStarted ?
-           <div><h3>{name}</h3></div> :
-            <form  onSubmit={submitStart}>
-            <label>
-                Name:
-                <input type="text" name="name" value={name} onChange={handleChange}/>
-                </label>
-              <button>start!!</button>
-            </form>
-
-           }
-
-
-      <div>currentscore{currentScore}</div>
-      <div>frame rolls out of 2: {frameRolls}</div>
-      <div>Frame: {frame}</div>
-      <div>result: {result}</div>
-      <div>Frame Score: {frameScore}</div>
-      <div>Total Score: {totalScore}</div>
-      <div>Game Over: {gameOver ? "gameOver" : "play On"}</div>
       <div>
-        <button onClick={rollBall} value={1}>1</button> <button  onClick={rollBall} value="2">2</button> <button  onClick={rollBall} value="3">3</button>
-        <button  onClick={rollBall} value="4">4</button> <button  onClick={rollBall} value="5">5</button> <button  onClick={rollBall} value="6">6</button>
-        <button  onClick={rollBall} value="7">7</button> <button  onClick={rollBall} value="8">8</button> <button  onClick={rollBall} value="9">9</button>
-        <button  onClick={rollBall} value="10">10</button>
+        <Start />
+      </div>
+      <div>
+        <Scoring />
       </div>
     </div>
   );
