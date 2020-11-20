@@ -4,10 +4,11 @@ import React from 'react';
 function PlayArea({ rollBall }) {
 
   return (
-    <div>
-      <div>
-        <button onClick={rollBall} value={1}>1</button>
-        <button  onClick={rollBall} value="2">2</button>
+    <div className="playContainer">
+      <div className="playArea">
+          <button className="button1" onClick={rollBall} value={1}>1</button>
+          <div>
+         <button  onClick={rollBall} value="2">2</button>
         <button  onClick={rollBall} value="3">3</button>
         <button  onClick={rollBall} value="4">4</button>
         <button  onClick={rollBall} value="5">5</button>
@@ -16,6 +17,7 @@ function PlayArea({ rollBall }) {
         <button  onClick={rollBall} value="8">8</button>
         <button  onClick={rollBall} value="9">9</button>
         <button  onClick={rollBall} value="10">10</button>
+        </div>
       </div>
     </div>
   )
