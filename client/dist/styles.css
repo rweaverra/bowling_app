@@ -10,29 +10,33 @@ button {
 
 }
 
-.hidden {
-  display:none;
+
+.ghosted {
+  display: none;
 }
 
 .middleBox {
   height: 120px;
   width: 120px;
-  animation-duration: 10s;
-  animation-name: button1;
+  /* animation-duration: 10s;
+  animation-name: button1; */
 
 
 }
 
 .firstRow {
-margin-left: 43px
+  justify-content: center;
 }
 
 .secondRow {
-  margin-left: 30px;
+  justify-content: center;
 }
 
 .thirdRow {
-  margin-left: 15px;
+  justify-content: center;
+}
+.forthRow {
+  justify-content: center;
 }
 
 

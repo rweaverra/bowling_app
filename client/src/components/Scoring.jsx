@@ -13,9 +13,9 @@ function Scoring() {
 
 
 
-  const rollBall = (event) => {
+  const rollBall = (value) => {
     //send request to server with button pressed
-    var score = event.target.value;
+    var score = value;
     postScore(score, (err, result) => {
         if(err) {
           console.log('error')
