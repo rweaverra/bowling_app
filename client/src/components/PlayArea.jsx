@@ -21,20 +21,17 @@ function PlayArea({ rollBall }) {
 function toggleHide(name, value) {
   var copy = JSON.parse(JSON.stringify(state))
   console.log('value', value);
-  for(let i = 5; i <= 10; i++) {
+  for(let i = 11 - value; i <= 10; i++) {
     console.log('i', i);
       for (var key in copy) {
         if(key.indexOf(i) > -1) {
           console.log('eat cheese')
           //its only setting state for the last iterated index. I need to figure out a way to set state for all of them!!!!
-          setState ({
-            ...state,
-            [key]: false,
-            cheese: [key]
-          })
+        copy[key] = false;
         }
       }
   }
+  setState(copy);
 console.log('state', state);
 
 
