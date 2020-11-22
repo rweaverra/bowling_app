@@ -39,7 +39,15 @@ function toggleHide(value) {
         }
       }
   }
+
+  if(value === 10) {
+    for(var key2 in copy) {
+      copy[key2] = true;
+    }
+   alert("strike!")
+  }
   setState(copy);
+
   }
   console.log('state', state)
 }

@@ -18,8 +18,8 @@ button {
 .middleBox {
   height: 120px;
   width: 120px;
-  /* animation-duration: 10s;
-  animation-name: button1; */
+  animation-duration: 5s;
+  animation-name: middleBox;
 
 
 }
@@ -41,7 +41,7 @@ button {
 
 
 
-@keyframes button1 {
+@keyframes middleBox {
   from {
     margin-left: 50%;
     width: 120px;
@@ -49,9 +49,15 @@ button {
 
   }
 
+  50% {
+    margin-top: 50%;
+    width: 120px;
+    height: 120px;
+  }
+
 
   to {
-    margin-left: 0%;
+    margin-left: -50%;
     width: 120px;
     height: 120px;
 
