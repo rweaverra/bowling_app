@@ -46,7 +46,9 @@ function Scoring() {
         <div>Total Score: {totalScore}</div>
         <div>Game Over: {gameOver ? "gameOver" : "play On"}</div>
       </div>
-        <PlayArea rollBall={rollBall} />
+        <PlayArea
+        frameRolls={frameRolls}
+        rollBall={rollBall} />
     </div>
   )
 }
