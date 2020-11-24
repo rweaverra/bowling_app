@@ -15,7 +15,6 @@ function Scoring() {
 
   const rollBall = (value) => {
     //send request to server with button pressed
-    console.log('ball value')
     var score = value;
     postScore(score, (err, result) => {
         if(err) {
@@ -49,7 +48,9 @@ function Scoring() {
       </div>
         <PlayArea
         frameRolls={frameRolls}
-        rollBall={rollBall} />
+        rollBall={rollBall}
+        currentScore={currentScore}
+        />
     </div>
   )
 }

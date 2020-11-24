@@ -3,17 +3,17 @@ import {
   Modal, ModalDialog, ModalHeader, ModalTitle, ModalBody, ModalFooter, Button,
 } from 'react-bootstrap';
 
-function StrikeModal(props) {
+function StrikeModal({show, onHide, strikeHit}) {
   return (
     <Modal
-      {...props}
+      show={show}
+      onHide={onHide}
       size="lg"
-
       centered
     >
 
       <Modal.Body>
-        <h1>Strike!!!!!</h1>
+  {strikeHit ? <h1>Strike!!!!!</h1> : <h1>Spare!</h1> }
            <br/>
            <br/>
            <br/>

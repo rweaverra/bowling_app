@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import Pins from './Pins.jsx';
 import StrikeModal from './StrikeModal.jsx';
+import SpareModal from './SpareModal.jsx';
 
-function PlayArea({ rollBall, frameRolls }) {
+function PlayArea({ rollBall, frameRolls, currentScore }) {
   const [modalShow, setModalShow] = useState(false);
+  const [strikeHit, setStrikeHit] = useState(false);
   const [state, setState] = useState({
     showButton1: true,
     showButton2: true,
@@ -17,12 +19,30 @@ function PlayArea({ rollBall, frameRolls }) {
     showButton10: true
   })
 
+
+  function showStrikeSpare(value, copy) {
+    console.log('value inside showStrikeSpare', value);
+    console.log('current score', currentScore);
+    if(value === 10) {
+      for(var key2 in copy) {
+        copy[key2] = true;
+      }
+     setStrikeHit(true);
+     setModalShow(true);
+    } else if(frameRolls > 0 && value === (10 - currentScore)) {
+      //value equals the highes current pin
+      console.log('inside spare finder')
+      setModalShow(true);
+    }
+
+  }
+
   function toggleHide(value) {
     var copy = JSON.parse(JSON.stringify(state))
 
 
     if(frameRolls > 0) {
-      //reset pins
+      showStrikeSpare(value, copy);
       for(var key1 in copy) {
         copy[key1] = true;
       }
@@ -39,16 +59,7 @@ function PlayArea({ rollBall, frameRolls }) {
         }
     }
 
-    //I will make this a separate function called alert strike, spare, or open and call it after each toggle Hide
-
-    if(value === 10) {
-      for(var key2 in copy) {
-        copy[key2] = true;
-      }
-     alert("strike!")//modal strike probably need state true false for strike modal can put modal inside playArea
-    }//else if value === highest value and frame rolls === 1 then show spare modal
-
-    //else show open modal and calcuate score
+    showStrikeSpare(value, copy);
     setState(copy);
 
     }
@@ -61,14 +72,18 @@ function PlayArea({ rollBall, frameRolls }) {
         Launch vertically centered modal
       </button>
       <StrikeModal
-      show={modalShow}
-      onHide={() => setModalShow(false)}
+      show={strikeModalShow}
+      onHide={() => setModalShow(false);
+      setStrikeHit(false)}
+      strikeHit={strikeHit}
       />
+
       <Pins
         rollBall={rollBall}
         frameRolls={frameRolls}
         state={state}
-        toggleHide={toggleHide} />
+        toggleHide={toggleHide}
+        />
     </div>
   )
 }
