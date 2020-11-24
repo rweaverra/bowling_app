@@ -18,9 +18,9 @@ button {
 .middleBox {
   height: 120px;
   width: 120px;
-  animation-duration: 5s;
+  /* animation-duration: 30s;
   animation-name: middleBox;
-
+  animation-iteration-count: infinite; */
 
 }
 
