@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { postScore } from './../../lib/routes.js';
 import PlayArea from './PlayArea.jsx';
+import ScoreTable from './ScoreTable.jsx';
 
 function Scoring() {
   const [frame, setFrame] = useState(1);
@@ -37,13 +38,12 @@ function Scoring() {
   }
   return (
     <div>
+      <ScoreTable
+        result={result}
+        frameScore={frameScore}
+        totalScore={totalScore}
+      />
       <div>
-        <div>currentscore{currentScore}</div>
-        <div>frame rolls out of 2: {frameRolls}</div>
-        <div>Frame: {frame}</div>
-        <div>result: {result}</div>
-        <div>Frame Score: {frameScore}</div>
-        <div>Total Score: {totalScore}</div>
         <div>Game Over: {gameOver ? "gameOver" : "play On"}</div>
       </div>
         <PlayArea

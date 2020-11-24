@@ -3,7 +3,7 @@ import {
   Modal, ModalDialog, ModalHeader, ModalTitle, ModalBody, ModalFooter, Button,
 } from 'react-bootstrap';
 
-function StrikeModal({show, onHide, strikeHit}) {
+function StrikeModal({show, onHide, isStrike}) {
   return (
     <Modal
       show={show}
@@ -13,7 +13,7 @@ function StrikeModal({show, onHide, strikeHit}) {
     >
 
       <Modal.Body>
-  {strikeHit ? <h1>Strike!!!!!</h1> : <h1>Spare!</h1> }
+  {isStrike ? <h1>Strike!!!!!</h1> : <h1>Spare!</h1> }
            <br/>
            <br/>
            <br/>

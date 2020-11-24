@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import React from 'react';
+import { Container, Row } from 'react-bootstrap';
+
 
 function Pins({ rollBall, frameRolls, state, toggleHide }) {
 
@@ -66,19 +67,17 @@ function Pins({ rollBall, frameRolls, state, toggleHide }) {
               rollBall('3');
             }}>3</button>
           </Row>
+
           <Row className="firstRow">
-            <button className={state.showButton1 ? "button1" : "ghosted"}
+          <button className={state.showButton1 ? "button1" : "ghosted"}
             onClick={ () => {
-            toggleHide(1);
-            rollBall('1');
-            }}
-            >1</button>
+             toggleHide(1);
+             rollBall('1');
+            }}>1</button>
           </Row>
-
-          </div>
+        </div>
       </div>
-
-          </Container>
+    </Container>
 
 
 
