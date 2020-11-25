@@ -5,7 +5,7 @@ import PlayArea from './PlayArea.jsx';
 import ScoreTable from './ScoreTable.jsx';
 import GameOverModal from './GameOverModal.jsx';
 
-function Scoring({ playerName }) {
+function Scoring() {
   const [name, setName] = useState('');
   const [frame, setFrame] = useState(1);
   const [currentScore, setCurrentScore] = useState(0);
@@ -42,15 +42,13 @@ function Scoring({ playerName }) {
         }
     });
   }
-  //onHide function that will reset the game. not sure if I can just write a function to reset calulator or how I go about that.
+
   const onHide = () => {
-    //post request to calculator to reset the player object
     startGame(name, (err, result) => {
       if(err) {
         console.log(err)
       } else {
         resultsAfterRoll(result.data)
-        //have to reset all of the pins
 }
 })
     setGameOver(false);
@@ -64,7 +62,7 @@ function Scoring({ playerName }) {
         result={result}
         frameScore={frameScore}
         totalScore={totalScore}
-        playerName={playerName}
+
 
       />
       <div>

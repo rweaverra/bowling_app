@@ -4,9 +4,11 @@ import StartGameModal from './StartGameModal.jsx'
 
 function ScoreTable({ result, frameScore, totalScore }) {
    const [playerName, setPlayerName] = useState('')
+   const [playerAdded, setPlayerAdded] = useState(false)
 
   const submitName = (name) => {
     setPlayerName(name);
+    setPlayerAdded(true);
     console.log('inside App submitName', playerName);
   }
 
@@ -18,7 +20,7 @@ function ScoreTable({ result, frameScore, totalScore }) {
     <Table striped bordered hover className="table1">
   <thead>
     <tr>
-      <th>{playerName}</th>
+      <th className={playerAdded ? "nameCell" : 'nothing'}>{playerName}</th>
       <th>1</th>
       <th>2</th>
       <th>3</th>

@@ -25,15 +25,15 @@ button {
   display: none;
 }
 
-.middleBox {
+/* .middleBox {
   margin-top: 20px;
   height: 120px;
   width: 120px;
-  /* animation-duration: 30s;
+  animation-duration: 30s;
   animation-name: middleBox;
-  animation-iteration-count: infinite; */
+  animation-iteration-count: infinite;
 
-}
+} */
 
 .middleBox button {
   border-radius: 50%;
@@ -110,4 +110,11 @@ button {
 .table1 {
   margin-bottom: 0;
   color: red;
+}
+
+.nameCell {
+  text-align: center;
+  color:white;
+  font-size: large;
+  background-color: goldenrod;
 }

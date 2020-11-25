@@ -104,7 +104,7 @@ const Score = function() {
         if(nextFrame.indexOf('/') > -1) {
           return 20;
         } else if ( isStrike && nextFrame) {
-        return;
+        return 10 + parseInt(nextFrame[0]) + parseInt(nextFrame[1]);
       }
 
      }
