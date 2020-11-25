@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { startGame } from './../../lib/routes.js';
+import { Modal, ModalBody } from 'react-bootstrap';
 
-
-function Start () {
+function StartGameModal({ submitName }) {
   const [name, setName] = useState('');
-  const [isStarted, setIsStarted] = useState(false);
+  const [isStarted, setIsStarted] = useState(true);
 
   const handleChange = (event) => {
     setName(event.target.value)
@@ -12,32 +12,41 @@ function Start () {
 
   const submitStart = () => {
     event.preventDefault();
-     setIsStarted(true);
+     setIsStarted(false);
       startGame(name, (err, result) => {
         if(err) {
           console.log(err)
         } else {
-
+         console.log('game has started', result)
   }
 })
   }
 
-   return (
-     <div>
-        {isStarted ?
-           <div><h3>{name}</h3></div> :
-            <form  onSubmit={submitStart}>
+  return (
+    <Modal
+    show={isStarted}
+    size="lg"
+    centered
+  >
+
+    <Modal.Body>
+       <div>
+            <form
+            onSubmit={ () => {
+              submitStart();
+              submitName(name);
+            }}>
             <label>
-                Name:
+                Enter Name to begin <br />
                 <input type="text" name="name" value={name} onChange={handleChange}/>
                 </label>
               <button>start!!</button>
             </form>
-
-           }
      </div>
-   )
 
+    </Modal.Body>
+  </Modal>
+  )
 }
 
-export default Start;
+export default StartGameModal;

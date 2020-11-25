@@ -5,7 +5,7 @@ import PlayArea from './PlayArea.jsx';
 import ScoreTable from './ScoreTable.jsx';
 import GameOverModal from './GameOverModal.jsx';
 
-function Scoring() {
+function Scoring({ playerName }) {
   const [name, setName] = useState('');
   const [frame, setFrame] = useState(1);
   const [currentScore, setCurrentScore] = useState(0);
@@ -64,6 +64,8 @@ function Scoring() {
         result={result}
         frameScore={frameScore}
         totalScore={totalScore}
+        playerName={playerName}
+
       />
       <div>
         <GameOverModal

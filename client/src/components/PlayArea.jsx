@@ -19,21 +19,15 @@ function PlayArea({ rollBall, frameRolls, currentScore, gameOver }) {
     showButton10: true
   })
 
-  function resetPins() { //not sure why reset Pins isnt working. I have it involed under set strike but nothing is happening. trying to reset pins after the game over.
-    var copy = JSON.parse(JSON.stringify(state))
-    for(var key2 in copy) {
-      copy[key2] = true;
-      setState(copy);
-  }
-}
+
 
   function showStrikeSpareModal(value, copy) {
     setIsStrike(false)
-    if(value === 10) {
-      // for(var key2 in copy) {
-      //   copy[key2] = true;
-      // }
-      resetPins();
+
+   if (value === 10) {
+      for(var key2 in copy) {
+        copy[key2] = true;
+      }
      setIsStrike(true);
      setModalShow(true);
     } else if(frameRolls > 0 && value === (10 - currentScore)) {
@@ -44,7 +38,7 @@ function PlayArea({ rollBall, frameRolls, currentScore, gameOver }) {
   function toggleHide(value) {
     var copy = JSON.parse(JSON.stringify(state))
 
-    if (frameRolls > 0) {
+     if (frameRolls > 0) {
       showStrikeSpareModal(value, copy);
       for(var key1 in copy) {
         copy[key1] = true;
@@ -61,12 +55,7 @@ function PlayArea({ rollBall, frameRolls, currentScore, gameOver }) {
         showStrikeSpareModal(value, copy);
         setState(copy);
     }
-  }
-  console.log('gameOver inside PlayArea', gameOver)
 
-  if (gameOver) {
-    // resetPins();
-    console.log("GAME OVER")
   }
 
   return (

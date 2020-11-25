@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Table from 'react-bootstrap/Table';
+import StartGameModal from './StartGameModal.jsx'
 
 function ScoreTable({ result, frameScore, totalScore }) {
+   const [playerName, setPlayerName] = useState('')
+
+  const submitName = (name) => {
+    setPlayerName(name);
+    console.log('inside App submitName', playerName);
+  }
 
   return (
+    <div>
+    <StartGameModal
+      submitName={submitName}
+    />
     <Table striped bordered hover className="table1">
   <thead>
     <tr>
-      <th></th>
+      <th>{playerName}</th>
       <th>1</th>
       <th>2</th>
       <th>3</th>
@@ -32,7 +43,7 @@ function ScoreTable({ result, frameScore, totalScore }) {
     </tr>
   </tbody>
 </Table>
-
+</div>
 
   )
 }
