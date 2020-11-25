@@ -30,15 +30,15 @@ function ScoreTable({ result, frameScore, totalScore }) {
   </thead>
   <tbody>
     <tr>
-      <td>result</td>
+      <td>Result</td>
       <td>{result[0]}</td>
       <td>{result[1]}</td>
       <td>{result[2]}</td>
       <td className="totalScoreNumber" rowSpan="2">{totalScore}</td>
 
     </tr>
-    <tr>
-      <td>frame Score</td>
+    <tr className="frameScore">
+      <td>Frame Score</td>
       <td>{frameScore[0]}</td>
       <td>{frameScore[1]}</td>
       <td>{frameScore[2]}</td>

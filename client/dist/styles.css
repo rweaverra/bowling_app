@@ -112,9 +112,25 @@ button {
   color: red;
 }
 
+thead {
+  background-color: cornflowerblue;
+}
+
+td {
+  text-align: center;
+}
+
+.nothing {
+  background-color: white;
+}
+
 .nameCell {
   text-align: center;
   color:white;
-  font-size: large;
-  background-color: goldenrod;
+  font-size: x-large;
+  background-color: cornflowerblue;
+}
+
+.frameScore {
+  background-color: aliceblue;
 }
