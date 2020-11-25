@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 function ScoreTable({ result, frameScore, totalScore }) {
 
   return (
-    <Table striped bordered hover>
+    <Table striped bordered hover className="table1">
   <thead>
     <tr>
       <th></th>

@@ -15,14 +15,14 @@ app.listen(PORT, () => {
 
 
 
-var player = new Score();//can remove this later on
+// var player = new Score();//can remove this later on
 
 app.post('/start', (req, res) => {
   var name = req.body.name;
   player = new Score();
   player.name = name;
-
-  res.send('responding from server');
+   console.log('new player created', player)
+  res.send(player);
 })
 
 

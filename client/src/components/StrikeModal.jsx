@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Modal, ModalDialog, ModalHeader, ModalTitle, ModalBody, ModalFooter, Button,
-} from 'react-bootstrap';
+import { Modal, ModalBody } from 'react-bootstrap';
 
 function StrikeModal({show, onHide, isStrike}) {
   return (

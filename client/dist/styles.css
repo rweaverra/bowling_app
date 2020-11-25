@@ -1,7 +1,17 @@
+body {
+
+}
+
 .playArea {
   height: 500px;
   display: flex;
   justify-content: center;
+
+}
+
+.board {
+  background-image: url('https://thetangerinebowl.com/wp-content/uploads/2015/06/light-wood-BK.png');
+  margin-top: -17px;
 
 }
 
@@ -16,6 +26,7 @@ button {
 }
 
 .middleBox {
+  margin-top: 20px;
   height: 120px;
   width: 120px;
   /* animation-duration: 30s;
@@ -38,6 +49,17 @@ button {
 .firstRow {
   justify-content: center;
 }
+
+.firstRow button {
+  width: 30px;
+}
+
+.button10 {
+  text-align: center;
+  width: 30px;
+  font-size: smaller;
+}
+
 
 .secondRow {
   justify-content: center;
@@ -83,4 +105,9 @@ button {
   text-align: center;
   vertical-align: middle;
   font-size: xx-large;
+}
+
+.table1 {
+  margin-bottom: 0;
+  color: red;
 }

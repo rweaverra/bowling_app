@@ -3,7 +3,7 @@ import Pins from './Pins.jsx';
 import StrikeModal from './StrikeModal.jsx';
 
 
-function PlayArea({ rollBall, frameRolls, currentScore }) {
+function PlayArea({ rollBall, frameRolls, currentScore, gameOver }) {
   const [modalShow, setModalShow] = useState(false);
   const [isStrike, setIsStrike] = useState(false);
   const [state, setState] = useState({
@@ -19,13 +19,21 @@ function PlayArea({ rollBall, frameRolls, currentScore }) {
     showButton10: true
   })
 
+  function resetPins() { //not sure why reset Pins isnt working. I have it involed under set strike but nothing is happening. trying to reset pins after the game over.
+    var copy = JSON.parse(JSON.stringify(state))
+    for(var key2 in copy) {
+      copy[key2] = true;
+      setState(copy);
+  }
+}
 
   function showStrikeSpareModal(value, copy) {
     setIsStrike(false)
     if(value === 10) {
-      for(var key2 in copy) {
-        copy[key2] = true;
-      }
+      // for(var key2 in copy) {
+      //   copy[key2] = true;
+      // }
+      resetPins();
      setIsStrike(true);
      setModalShow(true);
     } else if(frameRolls > 0 && value === (10 - currentScore)) {
@@ -54,9 +62,15 @@ function PlayArea({ rollBall, frameRolls, currentScore }) {
         setState(copy);
     }
   }
+  console.log('gameOver inside PlayArea', gameOver)
+
+  if (gameOver) {
+    // resetPins();
+    console.log("GAME OVER")
+  }
 
   return (
-    <div>
+    <div  className="board">
       <StrikeModal
         show={modalShow}
         isStrike={isStrike}
