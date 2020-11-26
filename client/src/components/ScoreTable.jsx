@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import StartGameModal from './StartGameModal.jsx'
 
-function ScoreTable({ result, frameScore, totalScore }) {
+function ScoreTable({ result, frameScore, totalScore, setAnimation }) {
    const [playerName, setPlayerName] = useState('')
    const [playerAdded, setPlayerAdded] = useState(false)
 
   const submitName = (name) => {
     setPlayerName(name);
     setPlayerAdded(true);
+    setAnimation();
     console.log('inside App submitName', playerName);
   }
 

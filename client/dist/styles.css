@@ -1,9 +1,6 @@
-body {
-
-}
 
 .playArea {
-  height: 500px;
+  height: 900px;
   display: flex;
   justify-content: center;
 
@@ -16,24 +13,29 @@ body {
 }
 
 button {
-  color: red;
-
+  outline: none !important;
 }
-
 
 .ghosted {
   display: none;
 }
 
-/* .middleBox {
+.middleBox {
+  margin-top: 20px;
+  height: 120px;
+  width: 120px;
+
+}
+
+.animated {
   margin-top: 20px;
   height: 120px;
   width: 120px;
   animation-duration: 30s;
   animation-name: middleBox;
   animation-iteration-count: infinite;
+}
 
-} */
 
 .middleBox button {
   border-radius: 50%;
@@ -43,6 +45,7 @@ button {
   font-weight: bold;
   background-color: blanchedalmond;
   box-shadow: 0px 8px 15px rgba(0, 0, 50);
+  outline: none;
 
 }
 
@@ -133,4 +136,40 @@ td {
 
 .frameScore {
   background-color: aliceblue;
+}
+
+.modal-content.startModal {
+  text-align: center;
+  background-color: white;
+  border: none;
+  border-radius: 3vh;
+  margin: auto;
+  max-width: 450px;
+  padding: 7vh 6vh;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+
+}
+
+.startModal input {
+  background-color: aliceblue;
+  margin-left: 4px;
+  margin-top: 40px;
+
+}
+
+.startModal button {
+  background-color: rgb(29, 226, 226);
+    border-color: rgb(29, 226, 226);
+    border-radius: 6px;
+    color: white;
+    font-size: 17px;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.modalTitle {
+  color: rgb(100, 50, 90);
+  font-weight: 500;
+  font-size: 30px;
+
 }

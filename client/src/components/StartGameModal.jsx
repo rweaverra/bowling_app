@@ -27,6 +27,8 @@ function StartGameModal({ submitName }) {
     show={isStarted}
     size="lg"
     centered
+    contentClassName="startModal"
+
   >
 
     <Modal.Body>
@@ -37,10 +39,10 @@ function StartGameModal({ submitName }) {
               submitName(name);
             }}>
             <label>
-                Enter Name to begin <br />
+                <p className="modalTitle">Enter Name to begin <br /></p>
                 <input type="text" name="name" value={name} onChange={handleChange}/>
                 </label>
-              <button>start!!</button>
+              <button>Start</button>
             </form>
      </div>
 

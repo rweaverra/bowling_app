@@ -2,14 +2,14 @@ import React from 'react';
 import { Container, Row } from 'react-bootstrap';
 
 
-function Pins({ rollBall, frameRolls, state, toggleHide }) {
+function Pins({ rollBall, frameRolls, state, toggleHide, isAnimated }) {
 
 
 
   return (
    <Container>
       <div className="playArea">
-        <div className="middleBox">
+        <div className={ isAnimated ? "middleBox animated" : "middleBox"}>
           <Row className="forthRow">
           <button className={state.showButton7 ? "button7" : "ghosted"}
               onClick={ () => {

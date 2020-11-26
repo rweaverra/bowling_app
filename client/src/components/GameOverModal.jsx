@@ -9,6 +9,8 @@ function GameOverModal({ gameOver, totalScore, onHide }) {
     onHide={onHide}
     size="lg"
     centered
+    contentClassName="startModal"
+
   >
 
     <Modal.Body>

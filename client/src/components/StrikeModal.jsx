@@ -8,6 +8,7 @@ function StrikeModal({show, onHide, isStrike}) {
       onHide={onHide}
       size="lg"
       centered
+      contentClassName="startModal"
     >
 
       <Modal.Body>

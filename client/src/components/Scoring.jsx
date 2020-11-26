@@ -14,6 +14,7 @@ function Scoring() {
   const [totalScore, setTotalScore] = useState(0);
   const [frameRolls, setFrameRolls] =  useState(0);
   const [gameOver, setGameOver] = useState(false);
+  const [isAnimated, setIsAnimated] = useState(false);
 
 
   const resultsAfterRoll = (update) => {
@@ -54,6 +55,10 @@ function Scoring() {
     setGameOver(false);
   }
 
+  const setAnimation = () => {
+    setIsAnimated(true);
+  }
+
 
 
   return (
@@ -62,6 +67,7 @@ function Scoring() {
         result={result}
         frameScore={frameScore}
         totalScore={totalScore}
+        setAnimation={setAnimation}
 
 
       />
@@ -77,6 +83,7 @@ function Scoring() {
         rollBall={rollBall}
         currentScore={currentScore}
         gameOver={gameOver}
+        isAnimated={isAnimated}
 
         />
     </div>

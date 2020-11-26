@@ -3,7 +3,7 @@ import Pins from './Pins.jsx';
 import StrikeModal from './StrikeModal.jsx';
 
 
-function PlayArea({ rollBall, frameRolls, currentScore, gameOver }) {
+function PlayArea({ rollBall, frameRolls, currentScore, gameOver, isAnimated }) {
   const [modalShow, setModalShow] = useState(false);
   const [isStrike, setIsStrike] = useState(false);
   const [state, setState] = useState({
@@ -73,6 +73,7 @@ function PlayArea({ rollBall, frameRolls, currentScore, gameOver }) {
         frameRolls={frameRolls}
         state={state}
         toggleHide={toggleHide}
+        isAnimated={isAnimated}
         />
     </div>
   )
