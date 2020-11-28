@@ -10,7 +10,8 @@ A fun interactive bowling game. Try and score a strike by clicking on the 10 pin
 * [Development](#development)
 
 # Demo
-![Bowling Demo Gif](https://user-images.githubusercontent.com/65146641/100294498-3184cb00-2f44-11eb-921d-e67230066408.gif)
+![bowling app ](https://user-images.githubusercontent.com/65146641/100522624-b3087300-3167-11eb-841a-f21943654f1c.gif)
+
 
 ## Technologies Used
 - JavaScript
@@ -26,7 +27,7 @@ A fun interactive bowling game. Try and score a strike by clicking on the 10 pin
 
 ## Development
   	
-> use the code below to start app
+> Use the commands inside your terminal terminal to start the app. Once you have executed the commands, open up your webbrowser and go to localhost:3000 to play the game.
 	
 ~~~~
 npm install
